@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solven Technology — IT Consulting Sydney</title>
+  <meta name="description" content="Sydney-based technology consulting. Microsoft 365 setup, website design, and ongoing IT management for small businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0a0a0f;
+      --bg-card:   #111118;
+      --bg-card2:  #16161f;
+      --border:    #1e1e2e;
+      --accent:    #4f7cff;
+      --accent-2:  #7c5cff;
+      --text:      #e8e8f0;
+      --muted:     #8888a8;
+      --radius:    14px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.55rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover {
+      background: #3a68f0;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(79,124,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(79,124,255,0.1);
+      border: 1px solid rgba(79,124,255,0.25);
+      color: #a0b8ff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      max-width: 820px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 2.75rem;
+      font-weight: 400;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      box-shadow: 0 8px 32px rgba(79,124,255,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(79,124,255,0.45);
+    }
+
+    .btn-primary svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-scroll {
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(79,124,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(79,124,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+      color: var(--accent);
+    }
+
+    .service-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #a0b8ff;
+      background: rgba(79,124,255,0.1);
+      border: 1px solid rgba(79,124,255,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    /* ── ABOUT ── */
+    #about .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(79,124,255,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-card .role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .cert-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .cert-badge svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+    }
+
+    .about-text .section-sub {
+      max-width: 100%;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ── CTA SECTION ── */
+    #cta {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-inner {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-inner .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.85rem 1.25rem;
+      }
+
+      .nav-logo {
+        font-size: 1rem;
+      }
+
+      #about .container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-visual {
+        order: -1;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-primary {
+        font-size: 1rem;
+        padding: 0.9rem 2rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Solven<span>.</span></a>
+    <a href="mailto:solventechnology@gmail.com" class="nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-badge">Sydney-Based Technology Consulting</div>
+    <h1>Your business deserves<br/><span class="gradient">technology that works.</span></h1>
+    <p>Solven Technology helps small businesses across Sydney get their tech set up properly — from Microsoft 365 to websites to ongoing IT support.</p>
+    <a href="mailto:solventechnology@gmail.com" class="btn-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Get in Touch
+    </a>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Everything your business needs,<br/>handled properly.</h2>
+        <p class="section-sub">No jargon, no unnecessary complexity. Just the right tech, set up the right way.</p>
+      </div>
+      <div class="services-grid">
+
+        <!-- M365 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l3 3 2-2 3 3"/></svg>
+          </div>
+          <h3>Microsoft 365 Setup &amp; Security</h3>
+          <p>Get your business set up on Microsoft 365 the right way — with professional email, Teams, OneDrive, and rock-solid security settings to protect your data and your team.</p>
+          <div class="service-tags">
+            <span class="tag">Business Email</span>
+            <span class="tag">Teams &amp; OneDrive</span>
+            <span class="tag">MFA &amp; Security</span>
+            <span class="tag">User Management</span>
+          </div>
+        </div>
+
+        <!-- Web Design -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Website Design for Small Businesses</h3>
+          <p>A clean, fast, professional website that actually represents your business. Built to load quickly, look great on any device, and help customers find and trust you online.</p>
+          <div class="service-tags">
+            <span class="tag">Custom Design</span>
+            <span class="tag">Mobile Friendly</span>
+            <span class="tag">Fast &amp; SEO-Ready</span>
+            <span class="tag">Easy to Update</span>
+          </div>
+        </div>
+
+        <!-- IT Management -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Ongoing IT Management</h3>
+          <p>Think of us as your part-time IT department. We keep your systems running smoothly, handle issues when they come up, and make sure your technology grows with your business.</p>
+          <div class="service-tags">
+            <span class="tag">Regular Maintenance</span>
+            <span class="tag">Help Desk Support</span>
+            <span class="tag">Software Updates</span>
+            <span class="tag">Backup &amp; Recovery</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-avatar">💻</div>
+          <h3>Solven Technology</h3>
+          <div class="role">Sydney, NSW · Technology Consultant</div>
+          <p>A young, Sydney-based tech consultant who believes small businesses deserve enterprise-quality technology — without the enterprise-level complexity or cost. I work with you directly, no middlemen, no big agency overhead.</p>
+          <div class="cert-badges">
+            <span class="cert-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Microsoft Certified
+            </span>
+            <span class="cert-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Based in Sydney
+            </span>
+            <span class="cert-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Small Business Focused
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">About</span>
+        <h2 class="section-title">Tech that's sorted,<br/>so you can focus<br/>on your business.</h2>
+        <p class="section-sub">Too many small businesses are running on patched-together tech that slows them down. Solven Technology was built to fix that — offering the kind of thoughtful, reliable IT setup that used to only be available to larger companies.</p>
+        <p class="section-sub">Whether you're starting from scratch or cleaning up a mess someone else left behind, we'll get your technology working properly and keep it that way.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">M365</div>
+            <div class="stat-label">Certified &amp; specialised</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">SYD</div>
+            <div class="stat-label">Based in Sydney, AU</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3-in-1</div>
+            <div class="stat-label">Setup, web &amp; support</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">SMB</div>
+            <div class="stat-label">Small business focused</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="section-label">Ready to Start?</span>
+        <h2 class="section-title">Let's sort out your technology.</h2>
+        <p>Reach out today for a no-pressure chat about what your business needs. Based in Sydney and happy to meet in person or over a call.</p>
+        <a href="mailto:solventechnology@gmail.com" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Solven Technology · Sydney, Australia · <a href="mailto:solventechnology@gmail.com">solventechnology@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
